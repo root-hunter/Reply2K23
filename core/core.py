@@ -145,9 +145,3 @@ class Map:
         
         return False
 
-map = Map()
-map.place_snake(snake_index=0, position=Position(2, 0))
-map.place_snake(snake_index=1, position=Position(3, 0))
-map.place_snake(snake_index=2, position=Position(6, 2))
-
-map.find_possible_moves(0)

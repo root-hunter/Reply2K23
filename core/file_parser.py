@@ -1,5 +1,5 @@
 
-def parse_file(filename="file.txt"):
+def parse_file(filename="test_files/file.txt"):
     data = {}
 
     with open("file.txt", "r") as file:
