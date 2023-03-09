@@ -7,8 +7,9 @@ def parse_file(filename="file.txt"):
 
         first_row = rows[0].split(" ")
         
-        data["R"] = int(first_row[0])
-        data["C"] = int(first_row[1])
+        data["R"] = int(first_row[1])
+        data["C"] = int(first_row[0])
+
         data["S"] = int(first_row[2])
         data["snakes"] = [int(x) for x  in rows[1].split(" ")]
 
@@ -20,13 +21,12 @@ def parse_file(filename="file.txt"):
             r = rows[i].split(" ")
             for j in range(len(r)):
                 if r[j] == "*":
-                    data["wormhall"].append((i - 2, j))
-                    tmp.append(-10001)
+                    data["wormhall"].append((j, i - 2))
+                    tmp.append(0)
                 else:
                     tmp.append(int(r[j]))
                     
             data["matrix"].append(tmp)
         
-        print(data)
         file.close()
     return data
