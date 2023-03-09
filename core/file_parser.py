@@ -2,7 +2,7 @@
 def parse_file(filename="test_files/file.txt"):
     data = {}
 
-    with open("file.txt", "r") as file:
+    with open(filename, "r") as file:
         rows = file.read().split("\n")
 
         first_row = rows[0].split(" ")

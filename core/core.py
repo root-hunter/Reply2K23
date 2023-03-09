@@ -1,41 +1,14 @@
-import file_parser as fp
 
 
-map_state = fp.parse_file()
+from core.file_parser import parse_file
+from core.position import Position
+from core.snake import Snake
+from core.wormhall import Wormhall
 
-matrix = map_state["matrix"]
-wormhall = map_state["wormhall"]
-
-
-class Position:
-    def __init__(self, x, y) -> None:
-        self.x = x
-        self.y = y
-
-    def __str__(self) -> str:
-        return "({}, {})".format(self.x, self.y)
-
-class Wormhall:
-    def __init__(self, position: Position) -> None:
-        self.position = position
-
-class Snake:
-    def __init__(self, length) -> None:
-        self.positions = []
-        self.length = length
-
-    def __eq__(self, __o: object) -> bool:
-        return __o.x == self.x and __o.y == self.y
-    
-    def move(self, position: Position):
-        self.positions.append(position)
-
-    def get_head(self) -> Position:
-        return self.positions[len(self.positions) - 1]
 
 class Map:
     def __init__(self) -> None:
-        parsed_data = fp.parse_file()
+        parsed_data = parse_file()
 
         self.matrix_point = parsed_data["matrix"]
         self.snakes = [Snake(length=snake) for snake in parsed_data["snakes"]]
@@ -109,15 +82,9 @@ class Map:
                             possible_moves.append(x)
 
         print([str(x) for x in possible_moves])
-        print()
 
-        t = []
-        sorted_points = [self.matrix_point[x.y][x.x] for x in possible_moves].sort()
-
-        for point in sorted_points:
-            pass
-
-        possible_moves.sort()
+        #TODO
+       
         
 
     def get_all_wormhall_exclude_itself(self, wormhall_position: Position):
